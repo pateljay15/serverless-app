@@ -1,0 +1,48 @@
+/* General container settings */
+.container {
+    display: flex;
+    justify-content: space-between; /* Aligns children to each side */
+    padding: 20px; /* Adds padding around the content */
+    gap: 20px; /* Ensures space between columns */
+    background-color: #f9f9f9; /* Light background for better readability */
+}
+
+/* Styling for the left panel where the form is placed */
+.left-panel {
+    width: 30%; /* Assigns 30% of container width to the form */
+    min-width: 300px; /* Ensures the form doesn't get too small */
+    background-color: #ffffff; /* White background for focus */
+    padding: 20px; /* Padding for internal spacing */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for modern look */
+}
+
+/* Styling for the right panel where the posts are displayed */
+.right-panel {
+    width: 68%; /* Assigns the rest to the posts list */
+    background-color: #ffffff; /* White background for clean appearance */
+    padding: 20px; /* Padding for internal spacing */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for modern look */
+}
+
+/* Header styling for the posts section */
+.posts-title {
+    margin-bottom: 20px; /* Space above the posts list */
+    font-size: 24px; /* Larger font size for heading */
+    color: #333; /* Dark grey color for better readability */
+    font-weight: 600; /* Semi-bold for emphasis */
+}
+
+/* Improvements for overall layout responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks the panels vertically on smaller screens */
+        gap: 10px; /* Reduced gap for smaller screens */
+    }
+
+    .left-panel, .right-panel {
+        width: 100%; /* Full width for better usability on small screens */
+        min-width: 0; /* Removes minimum width restriction */
+    }
+}
