@@ -11,7 +11,7 @@ function Nav() {
 
     const handleLogout = () => {
         removeAuthToken();
-        navigate('/signup');
+        navigate('/');
     };
 
     return (
@@ -20,8 +20,8 @@ function Nav() {
                 <a href="/">LetsSocial</a>
             </div>
             <div className="navbar-links">
-                {auth !== null && <li><a href="/">Home</a></li>}
-                {auth == null && <li><a href="/signup">Signup</a></li>}
+                {auth !== null && <li><a href="/home">Home</a></li>}
+                {auth == null && <li><a href="/">Signup</a></li>}
                 {auth !== null ? (
                     <>
                         <span className="auth" onClick={handleLogout}>Logout</span>
