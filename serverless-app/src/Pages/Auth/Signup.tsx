@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Make sure the CSS file is imported
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
-import { signup } from '../../lambda-calls/LambdaCalls';
+import { setupInitialProfile, signup } from '../../lambda-calls/LambdaCalls';
 import random from 'random'
 
 interface FormData {
@@ -34,7 +34,11 @@ const Signup: React.FC = () => {
             }
             signup(data)
             .then(res => {
-                navigate("/login")
+                setupInitialProfile({ "userId": data.id.toString(), "profileData": {"name": data.name, "email": data.email}})
+                .then(data => {
+                    console.log(data)
+                    navigate("/login")
+                })
             })
             .catch(err => {
                 alert(err)

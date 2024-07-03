@@ -1,6 +1,6 @@
-import React from 'react'
-import { NavLink, useNavigate } from "react-router-dom"
-import "./Nav.css"
+import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
+import "./Nav.css";
 import { getAuthenticationToken, removeAuthToken } from '../lambda-calls/LambdaCalls';
 
 function Nav() {
@@ -17,25 +17,20 @@ function Nav() {
     return (
         <nav>
             <div className="navbar-brand">
-                <a href="/">LetsSocial</a>
+                <NavLink to="/">LetsSocial</NavLink>
             </div>
-            <div className="navbar-links">
-                {auth !== null && <li><a href="/home">Home</a></li>}
-                {auth == null && <li><a href="/">Signup</a></li>}
+            <ul className="navbar-links">
+                {auth && <li><NavLink to="/home" className={setActiveLink}>Home</NavLink></li>}
+                {auth && <li><NavLink to="/profile" className={setActiveLink}>Profile</NavLink></li>}
+                {auth == null && <li><NavLink to="/" className={setActiveLink}>Signup</NavLink></li>}
                 {auth !== null ? (
-                    <>
-                        <span className="auth" onClick={handleLogout}>Logout</span>
-                    </>
+                    <li><span className="auth" onClick={handleLogout}>Logout</span></li>
                 ) : (
-                    <>
-                        <NavLink style={{ textDecoration: 'none' }} to="/login">
-                            <span className="auth">Login</span>
-                        </NavLink>
-                    </>
+                    <li><NavLink to="/login" className={setActiveLink}>Login</NavLink></li>
                 )}
-            </div>
+            </ul>
         </nav>
     );
-};
+}
 
 export default Nav;

@@ -20,11 +20,12 @@ const Home: React.FC = () => {
         let newPost = { id: Date.now(), title, imageurl, description };
         setPosts(prevPosts => [...prevPosts, newPost]);
         let dam = imageurl.split(",")
+        console.log(filename, dam[1])
         postImage(filename, dam[1])
         .then(data => {
             console.log(data)
 
-            postData({...newPost, userid: auth.id, imageurl: `https://post-images15.s3.amazonaws.com/${filename}`})
+            postData({...newPost, userid: auth.id, imageurl: `https://storage.googleapis.com/profile-images15/${filename}`})
             .then(res => {
                 console.log(res)
             })

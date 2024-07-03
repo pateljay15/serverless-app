@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import Nav from './Navbar/Nav';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Signup from './Pages/Auth/Signup';
 import Login from './Pages/Auth/Login';
 import Home from './Pages/Home';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
-  const [posts, setPosts] = useState([])
-
   return (
     <div className="App">
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<Signup />} /> 
+          <Route path="/" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} /> // Add the Profile route here
         </Routes>
-        <Routes>
-          <Route path="/login" element={<Login />} /> 
-        </Routes>
-        <Routes>
-          <Route path="/home" element={<Home />} /> 
-        </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
     </div>
   );
 }
